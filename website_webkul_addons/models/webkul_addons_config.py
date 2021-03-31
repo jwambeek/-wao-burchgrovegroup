@@ -23,6 +23,7 @@ class WebkulWebsiteAddons(models.TransientModel):
 
 
     #to remove the ambiquity error from the system so that we can install the webkul module in the system
+    
     shopify_user_ids = fields.Many2many("res.users", "shopify_res_config_settings_res_users_rel_webkul",
                                         "res_config_settings_id", "res_users_id", string="Responsible User")
     
