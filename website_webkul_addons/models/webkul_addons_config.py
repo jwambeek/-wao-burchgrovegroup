@@ -21,6 +21,23 @@ class WebkulWebsiteAddons(models.TransientModel):
     _inherit = 'res.config.settings'
     _description = "Configuration settings for Website Webkul Addons"
 
+
+    #to remove the ambiquity error from the system so that we can install the webkul module in the system
+    shopify_user_ids = fields.Many2many("res.users", "shopify_res_config_settings_res_users_rel_webkul",
+                                        "res_config_settings_id", "res_users_id", string="Responsible User")
+    
+    def _get_shopify_default_financial_statuses_webkul(self):
+        if self._context.get('default_shopify_instance_id', False):
+            financial_status_ids = self.env['sale.auto.workflow.configuration.ept'].search(
+                [('shopify_instance_id', '=', self._context.get('default_shopify_instance_id', False))]).ids
+            return [(6, 0, financial_status_ids)]
+    
+    shopify_financial_status_ids = fields.Many2many(
+        'sale.auto.workflow.configuration.ept',
+        'shopify_sale_auto_workflow_conf_rel_webkul',
+        'financial_onboarding_status_id', 'workflow_id',
+        string='Shopify Financial Status', default=_get_shopify_default_financial_statuses_webkul)
+
     # Social Network
 
     # Product Management

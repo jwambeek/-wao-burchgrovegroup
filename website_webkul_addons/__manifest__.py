@@ -17,7 +17,7 @@
   "name"                 :  "Website Webkul Addons",
   "summary"              :  """Website Webkul Addons allows Odoo users to manage all Webkul’s Odoo website Related modules from single page.""",
   "category"             :  "Hidden",
-  "version"              :  "1.0.0",
+  "version"              :  "1.0.1",
   "author"               :  "Webkul Software Pvt. Ltd.",
   "website"              :  "https://store.webkul.com/Odoo.html",
   "description"          :  """Website Webkul Addons
